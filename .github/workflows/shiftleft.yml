@@ -28,6 +28,7 @@ jobs:
     - name: NextGen Static Analysis
       run: | 
         export SL_CPG_OPTS="-J-Xms2g -J-Xmx7g"
+        echo "$(SL_CPG_OPTS)"
         ${GITHUB_WORKSPACE}/sl analyze --strict --wait --app shiftleft-kotlin-demo --container 18fgsa/s3-resource --tag branch=${{ github.head_ref || steps.extract_branch.outputs.branch }} --kotlin .
       env:
         SHIFTLEFT_ACCESS_TOKEN: ${{ secrets.SHIFTLEFT_ACCESS_TOKEN }}
